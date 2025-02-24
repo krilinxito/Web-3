@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout Blog</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+      height: 80vh;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 15px;
+      flex: 1 1 calc(33% - 20px);
+      box-sizing: border-box;
+    }
+    @media (max-width: 768px) {
+      .card {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+    @media (max-width: 480px) {
+      .card {
+        flex: 1 1 100%;
+      }
+      footer{
+        margin-top: 300px;
+      }
+      footer{
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Layout Blog</h1>
+  </header>
+  <div class="container">
+    <h2>Artículos Recientes</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Título del Artículo 1</h3>
+        <p>Resumen breve del artículo...</p>
+      </div>
+      <div class="card">
+        <h3>Título del Artículo 2</h3>
+        <p>Resumen breve del artículo...</p>
+      </div>
+      <div class="card">
+        <h3>Título del Artículo 3</h3>
+        <p>Resumen breve del artículo...</p>
+      </div>
+      <div class="card">
+        <h3>Título del Artículo 4</h3>
+        <p>Resumen breve del artículo...</p>
+      </div>
+      <div class="card">
+        <h3>Título del Artículo 5</h3>
+        <p>Resumen breve del artículo...</p>
+      </div>
+      <div class="card">
+        <h3>Título del Artículo 6</h3>
+        <p>Resumen breve del artículo...</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Footer</p>
+  </footer>
+</body>
+</html>

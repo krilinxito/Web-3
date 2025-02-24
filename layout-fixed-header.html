@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout con Header Fijo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #333;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      z-index: 1000;
+    }
+    main {
+      margin-top: 200px; 
+      padding: 20px;
+      height: 80vh;
+    }
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Header Fijo</h1>
+  </header>
+  <main>
+    <h2>Contenido Principal</h2>
+    <p>Este contenido se desplaza debajo del header fijo.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus omnis tempore at enim doloribus repellendus dicta facilis nesciunt ratione dolores commodi quidem accusantium obcaecati dolorum, fugiat nostrum veritatis quam. Laboriosam.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a semper risus. Praesent euismod metus non tortor sollicitudin, et condimentum justo ultricies.</p>
+  </main>
+  <footer>
+    <p>Footer</p>
+  </footer>
+</body>
+</html>
