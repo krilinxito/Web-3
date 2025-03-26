@@ -15,6 +15,5 @@ console.time('Conexión con Pooling');
 pool.query('SELECT * FROM users', (err, results) => {
     if (err) throw err;
     console.log('Usuarios:', results);
-    
     console.timeEnd('Conexión con Pooling'); 
 });
