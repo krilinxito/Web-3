@@ -13,9 +13,12 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+  <nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Gestión de Usuarios</span>
+    </div>
+  </nav>
   <div class="container mt-5">
-    <h1 class="mb-4 text-center">CRUD de Usuarios</h1>
-
     <!-- Formulario -->
     <form action="/usuarios" method="POST" class="row g-3 mb-4 needs-validation" novalidate>
       <div class="col-md-5">
@@ -60,7 +63,11 @@
       </tbody>
     </table>
   </div>
-
+  <footer class="text-center mt-5 text-muted">
+    <hr>
+    <p>CRUD desarrollado por <strong>Maximiliano Gomez Mallo</strong> – 2025</p>
+  </footer>
+  
   <!-- JS de validación y mensajes -->
   <script>
     // Validación del formulario
