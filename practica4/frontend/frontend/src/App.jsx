@@ -16,7 +16,7 @@ function App() {
   const [nuevoNombre, setNuevoNombre] = useState('');
   const [productoEditando, setProductoEditando] = useState(null);
   const [modalCrear, setModalCrear] = useState(false);
-  const [modalEditar, setModalEditar] = useState(false); // 👉 nuevo estado para edición
+  const [modalEditar, setModalEditar] = useState(false); 
 
   const toggleModalCrear = () => {
     setModalCrear(!modalCrear);
