@@ -16,10 +16,15 @@ function App() {
   const [nuevoNombre, setNuevoNombre] = useState('');
   const [productoEditando, setProductoEditando] = useState(null);
   const [modalCrear, setModalCrear] = useState(false);
+  const [modalEditar, setModalEditar] = useState(false); // 👉 nuevo estado para edición
 
   const toggleModalCrear = () => {
     setModalCrear(!modalCrear);
     setNuevoNombre('');
+  };
+
+  const toggleModalEditar = () => {
+    setModalEditar(!modalEditar);
   };
 
   const fetchProductos = useCallback(async () => {
@@ -108,16 +113,19 @@ function App() {
 
   const handleEditar = (producto) => {
     setProductoEditando(producto);
+    setModalEditar(true);
   };
 
-  const handleActualizar = async (e) => {
-    e.preventDefault();
+  const handleActualizar = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/productos/${productoEditando.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(productoEditando),
-      });
+      const res = await fetch(
+        `http://localhost:3000/api/productos/${productoEditando.id}`,
+        {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(productoEditando),
+        }
+      );
 
       if (!res.ok) throw new Error();
 
@@ -129,6 +137,7 @@ function App() {
       });
 
       setProductoEditando(null);
+      toggleModalEditar();
       fetchProductos();
     } catch (error) {
       Swal.fire({
@@ -147,6 +156,7 @@ function App() {
         Agregar Producto
       </Button>
 
+      {/* Modal para crear */}
       <Modal isOpen={modalCrear} toggle={toggleModalCrear}>
         <ModalHeader toggle={toggleModalCrear}>Nuevo Producto</ModalHeader>
         <ModalBody>
@@ -171,27 +181,42 @@ function App() {
         </ModalFooter>
       </Modal>
 
-      {productoEditando && (
-        <form onSubmit={handleActualizar} className="mt-3">
+      {/* Modal para editar */}
+      <Modal isOpen={modalEditar} toggle={toggleModalEditar}>
+        <ModalHeader toggle={toggleModalEditar}>Editar Producto</ModalHeader>
+        <ModalBody>
           <Input
             type="text"
-            value={productoEditando.nombre}
+            value={productoEditando?.nombre || ''}
             onChange={(e) =>
-              setProductoEditando({ ...productoEditando, nombre: e.target.value })
+              setProductoEditando({
+                ...productoEditando,
+                nombre: e.target.value,
+              })
             }
-            required
           />
-          <div className="mt-2">
-            <Button type="submit" color="warning" className="me-2">
-              Guardar cambios
-            </Button>
-            <Button color="secondary" onClick={() => setProductoEditando(null)}>
-              Cancelar
-            </Button>
-          </div>
-        </form>
-      )}
+        </ModalBody>
+        <ModalFooter>
+          <Button
+            color="warning"
+            onClick={handleActualizar}
+            disabled={!productoEditando?.nombre?.trim()}
+          >
+            Guardar cambios
+          </Button>
+          <Button
+            color="secondary"
+            onClick={() => {
+              setProductoEditando(null);
+              toggleModalEditar();
+            }}
+          >
+            Cancelar
+          </Button>
+        </ModalFooter>
+      </Modal>
 
+      {/* Tabla de productos */}
       <Table striped bordered hover className="mt-4">
         <thead>
           <tr>
